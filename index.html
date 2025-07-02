@@ -1,0 +1,26 @@
+function getCurrentPeriod() {
+  const now = new Date();
+
+  // Convert current time to minutes since midnight
+  const currentMinutes = now.getHours() * 60 + now.getMinutes();
+
+  const periods = [
+    { start: 7 * 60 + 45, end: 8 * 60 + 45 },   // Period 1: 7:45–8:45 AM
+    { start: 8 * 60 + 55, end: 9 * 60 + 45 },   // Period 2: 8:55–9:45 AM
+    { start: 9 * 60 + 55, end: 10 * 60 + 45 },  // Period 3: 9:55–10:45 AM
+    { start: 10 * 60 + 55, end: 11 * 60 + 45 }, // Period 4: 10:55–11:45 AM
+    { start: 12 * 60 + 40, end: 13 * 60 + 30 }, // Period 5: 12:40–1:30 PM
+    { start: 13 * 60 + 40, end: 14 * 60 + 30 }, // Period 6: 1:40–2:30 PM
+    { start: 14 * 60 + 40, end: 15 * 60 + 30 }, // Period 7: 2:40–3:30 PM
+  ];
+
+  for (let i = 0; i < periods.length; i++) {
+    if (currentMinutes >= periods[i].start && currentMinutes <= periods[i].end) {
+      return `You are in period ${i + 1}.`;
+    }
+  }
+
+  return "You are not in a class period right now.";
+}
+
+console.log(getCurrentPeriod());
